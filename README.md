@@ -22,7 +22,9 @@
 - 为了解决这个问题，“残差网络”使得梯度更容易地流动到浅层的网络当中去，
 
 ### Xception
-##### DepthWise
+###### DepthWise
+- 卷积操作时须不需要同时考虑通道和区域
+- 我们首先对每一个通道进行各自的卷积操作，有多少个通道就有多少个过滤器。得到新的通道feature maps之后，这时再对这批新的通道feature maps进行标准的1×1跨通道卷积操作。这种操作被称为 “DepthWise convolution” ，缩写“DW”
 
 ###  ShuffleNet
 
