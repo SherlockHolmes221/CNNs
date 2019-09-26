@@ -89,7 +89,8 @@ class AlexNet(nn.Module):
 
 
 def get_model():
-    return AlexNet()
+    net  = AlexNet()
+
 
 
 if __name__ == '__main__':
