@@ -98,8 +98,9 @@ class Res50(object):
         x1 = self.bn_relu(x1)
         print("end1"+str(x1.shape))
 
-        x1 = self.avg_pooling(x1, 7, 1)
+        x1 = self.avg_pooling(x1)
         x1 = self.fc(x1, 2048, 1000, name='fc', softmax=True)
+        print(x1.shape)#(?, 1000)
 
         return x1
 
@@ -117,6 +118,7 @@ class Res50(object):
                                 regularizer=regularizer,
                                 trainable=True)
 
+        tf.layers.conv2d
         convlution = tf.nn.conv2d(input=input,
                                   filter=filter,
                                   strides=[1, stride_h, stride_w, 1],
@@ -134,10 +136,9 @@ class Res50(object):
                               strides=[1, stride, stride, 1],
                               padding=padding)
 
-    def avg_pooling(self, x, filter, stride, padding='SAME'):
-        return tf.nn.avg_pool2d(x, ksize=[1, filter, filter, 1],
-                                strides=[1, stride, stride, 1],
-                                padding=padding)
+    def avg_pooling(self, x):
+        from tflearn.layers.conv import global_avg_pool
+        return global_avg_pool(x, name='Global_avg_pooling')
 
     def bn_relu(self, input):
         conv = tf.layers.batch_normalization(input, beta_initializer=tf.zeros_initializer(),
@@ -182,5 +183,5 @@ class Res50(object):
 
 
 if __name__ == '__main__':
-    input_data = tf.placeholder(dtype=tf.float32, name='input_data', shape=[1, 224, 224, 3])
+    input_data = tf.placeholder(dtype=tf.float32, name='input_data', shape=[None, 224, 224, 3])
     Res50().train(input_data)
