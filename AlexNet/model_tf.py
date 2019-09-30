@@ -31,19 +31,20 @@ class Alexnet():
 
         self.fc8 = self.fc(dropout7, 4096, 1000, relu=False, name='fc8')
 
-        def conv_relu(x, filter_height, filter_width, num_filters, stride_y, stride_x, name, padding='SAME', groups=1):
-            input_channels = int(x.get_shape()[-1])
 
-            # Create lambda function for the convolution
-            convolve = lambda i, k: tf.nn.conv2d(i, k, strides=[1, stride_y, stride_x, 1], padding=padding)
+    def conv_relu(self, x, filter_height, filter_width, num_filters, stride_y, stride_x, name, padding='SAME', groups=1):
+        input_channels = int(x.get_shape()[-1])
 
-            with tf.variable_scope(name) as scope:
-                # Create tf variables for the weights and biases of the conv layer
-                weights = tf.get_variable('weights', shape=[filter_height,
+        # Create lambda function for the convolution
+        convolve = lambda i, k: tf.nn.conv2d(i, k, strides=[1, stride_y, stride_x, 1], padding=padding)
+
+        with tf.variable_scope(name) as scope:
+            # Create tf variables for the weights and biases of the conv layer
+            weights = tf.get_variable('weights', shape=[filter_height,
                                                         filter_width,
                                                         input_channels/groups,
                                                         num_filters])
-                biases = tf.get_variable('biases', shape=[num_filters])
+            biases = tf.get_variable('biases', shape=[num_filters])
 
             if groups == 1:
                 conv = convolve(x, weights)
@@ -59,8 +60,6 @@ class Alexnet():
             # Apply relu function
             relu = tf.nn.relu(bias, name=scope.name)
             return relu
-
-
 
 
     def fc(self, x,  input_num, output_num, name, relu=True):

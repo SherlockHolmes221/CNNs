@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b003cb05-f0db-4a45-a283-5a0338c0e16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ShuffleNet/model_torch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resnet/Resnet50_tf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlexNet/model_tf.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlexNet/model_tf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlexNet/model_troch.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlexNet/model_troch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>

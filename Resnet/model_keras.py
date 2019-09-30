@@ -142,14 +142,10 @@ def _handle_dim_ordering():
     global ROW_AXIS
     global COL_AXIS
     global CHANNEL_AXIS
-    if K.image_dim_ordering() == 'tf':
-        ROW_AXIS = 1
-        COL_AXIS = 2
-        CHANNEL_AXIS = 3
-    else:
-        CHANNEL_AXIS = 1
-        ROW_AXIS = 2
-        COL_AXIS = 3
+
+    ROW_AXIS = 1
+    COL_AXIS = 2
+    CHANNEL_AXIS = 3
 
 def _get_block(identifier):
     if isinstance(identifier, six.string_types):
@@ -178,9 +174,9 @@ class ResnetBuilder(object):
         if len(input_shape) != 3:
             raise Exception("Input shape should be a tuple (nb_channels, nb_rows, nb_cols)")
 
-        # Permute dimension order if necessary
-        if K.image_dim_ordering() == 'tf':
-            input_shape = (input_shape[1], input_shape[2], input_shape[0])
+        # # Permute dimension order if necessary
+        # if K.image_dim_ordering() == 'tf':
+        #     input_shape = (input_shape[1], input_shape[2], input_shape[0])
 
         # Load function from str if needed.
         block_fn = _get_block(block_fn)
@@ -202,6 +198,7 @@ class ResnetBuilder(object):
 
         # Classifier block
         block_shape = K.int_shape(block)
+        print(block_shape)
         pool2 = AveragePooling2D(pool_size=(block_shape[ROW_AXIS], block_shape[COL_AXIS]),
                                  strides=(1, 1))(block)
         flatten1 = Flatten()(pool2)
@@ -230,3 +227,7 @@ class ResnetBuilder(object):
     @staticmethod
     def build_resnet_152(input_shape, num_outputs):
         return ResnetBuilder.build(input_shape, num_outputs, bottleneck, [3, 8, 36, 3])
+
+
+if __name__ == '__main__':
+    ResnetBuilder.build_resnet_50([224, 224, 3], 1000)
