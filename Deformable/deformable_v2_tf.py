@@ -37,10 +37,10 @@ class deform_conv2d:
         pn = np.concatenate((pn_x.flatten(), pn_y.flatten()))
 
         pn = np.reshape(pn, [1, 1, 1, 2 * self.N])
-
+        print("pn")
+        print(np.array(pn))#[[[[-1 -1 -1  0  0  0  1  1  1 -1  0  1 -1  0  1 -1  0  1]]]]
         # Change the dtype of pn
         pn = tf.constant(pn, dtype)
-
         return pn
 
     # Create the p0 [1, h, w, 2N]
@@ -52,6 +52,9 @@ class deform_conv2d:
         p0_x = p0_x.flatten().reshape(1, h, w, 1).repeat(self.N, axis=3)
         p0_y = p0_y.flatten().reshape(1, h, w, 1).repeat(self.N, axis=3)
         p0 = np.concatenate((p0_x, p0_y), axis=3)
+
+        print("p0")
+        print(np.array(p0))
 
         # Change the dtype of p0
         p0 = tf.constant(p0, dtype)
@@ -96,10 +99,12 @@ class deform_conv2d:
 
             # offset with shape [batch_size, h, w, 2N]
             offset = self.conv(x, 2 * N, "offset")
+            print('offset'+str(offset.shape))
 
             # delte_weight with shape [batch_size, h, w, N * C]
             delte_weight = self.conv(x, N * C, "weight")
             delte_weight = tf.sigmoid(delte_weight)
+            print('delte_weight'+str(delte_weight.shape))
 
             # pn with shape [1, 1, 1, 2N]
             pn = self.get_pn(offset.dtype)
@@ -109,16 +114,23 @@ class deform_conv2d:
 
             # p with shape [batch_size, h, w, 2N]
             p = pn + p0 + offset
+            print("p")
+            print(p)
 
             # Reshape p to [batch_size, h, w, 2N, 1, 1]
             p = tf.reshape(p, [batch_size, h, w, 2 * N, 1, 1])
 
             # q with shape [h, w, 2]
             q = self.get_q([batch_size, h, w, C], offset.dtype)
+            print("q")
+            print(q)
 
             # Bilinear interpolation kernel G ([batch_size, h, w, N, h, w])
             gx = tf.maximum(1 - tf.abs(p[:, :, :, :N, :, :] - q[:, :, 0]), 0)
+            print(gx) #Tensor("Maximum:0", shape=(1, 224, 224, 9, 224, 224), dtype=float32
             gy = tf.maximum(1 - tf.abs(p[:, :, :, N:, :, :] - q[:, :, 1]), 0)
+            print(gy)
+
             G = gx * gy
 
             # Reshape G to [batch_size, h*w*N, h*w]
@@ -142,3 +154,11 @@ class deform_conv2d:
             layer_output = self.conv(y, self.output_channals, "feature")
 
             return layer_output
+
+
+if __name__ == '__main__':
+    input_data = tf.placeholder(dtype=tf.float32, name='input_data', shape=[1, 224, 224, 3])
+    #array = np.array(input_data)
+    #x, output_channals, kernel_size, stride, trainable, name
+    deform_conv2d(input_data, 64, 3, 1, True, 'deformable').deform_con2v()
+
