@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b003cb05-f0db-4a45-a283-5a0338c0e16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ShuffleNet/model_tf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deformable/deformable_v2_tf.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deformable/deformable_v2_tf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShuffleNet/model_tf.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShuffleNet/model_tf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basenet_paper/DILATEDCONVOLUTIONS.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
