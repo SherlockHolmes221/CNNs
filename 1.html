@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="file:/C:/Users/QuXian/.markdownNavigator/multimarkdown_layout.css">
+<style>
+
+body.multimarkdown-preview,
+body.multimarkdown-wiki-preview {
+    font-size: 14px;
+}
+</style>
+<link rel="stylesheet" href="file:/C:/Users/QuXian/.markdownNavigator/multimarkdown_darcula.css">
+</head>
+<body class="multimarkdown-preview">
+<div class="content">
+<div class="page-header"><a href="https://github.com/SherlockHolmes221/CNNs/blob/master/note.md" name="wikipage" id="wikipage" title="Click here to open the file on GitHub">note.md</a></div>
+<div class="hr"></div>
+<h1 id="return-of-the-devil-in-the-details-delving-deep-into-convolutional-nets2014" md-pos="2-80"><a href="#return-of-the-devil-in-the-details-delving-deep-into-convolutional-nets2014" name="return-of-the-devil-in-the-details-delving-deep-into-convolutional-nets2014">Return of the Devil in the Details: Delving Deep into Convolutional Nets(2014)</a></h1>
+<h5 id="主要是cnn和ifv为代表的浅层特征表示方法对图像分类效果的对比以及图像处理细节colour-information-feature-normalisation-and-data-augmentation带来的影响" md-pos="87-199"><a href="#主要是cnn和ifv为代表的浅层特征表示方法对图像分类效果的对比以及图像处理细节colour-information-feature-normalisation-and-data-augmentation带来的影响" name="主要是cnn和ifv为代表的浅层特征表示方法对图像分类效果的对比以及图像处理细节colour-information-feature-normalisation-and-data-augmentation带来的影响">主要是CNN和IFV为代表的浅层特征表示方法对图像分类效果的对比，以及图像处理细节(colour information, feature normalisation, and data augmentation)带来的影响</a></h5>
+<h5 id="实验主要结论" md-pos="206-213"><a href="#实验主要结论" name="实验主要结论">实验主要结论:</a></h5>
+<ul>
+  <li md-pos="214-243">在不影响性能的前提下，可以显著降低CNN输出层的维数</li>
+  <li md-pos="243-297">data augmentation在CNN-based methods 和传统方法上都可以显著提升性能</li>
+  <li md-pos="297-396">L2-normalising the CNN features before use in the SVM was found to be important for performance.</li>
+  <li md-pos="396-397"></li>
+</ul>
+<h5 id="实验细节" md-pos="405-409"><a href="#实验细节" name="实验细节">实验细节</a></h5>
+<ul>
+  <li md-pos="410-420" class="p">
+    <p md-pos="412-420" class="p">实验的网络结构</p>
+  </li>
+  <li md-pos="420-491" class="p">
+    <p md-pos="422-491" class="p">数据集 voc2007(mAP) voc2012 ILSVRC-2012(top-5) Caltech-101  Caltech-256</p>
+  </li>
+  <li md-pos="491-772" class="p">
+    <p md-pos="493-502" class="p">Training</p>
+    <p md-pos="506-527">dataset: ILSVRC-2012</p>
+    <p md-pos="532-565">momentum 0.9,weight decay 5·10−4</p>
+    <p md-pos="570-667">initial learning rate 10−2 decreased by a factor of 10 when the validation error stop decreasing</p>
+    <p md-pos="672-772">The layers are initialised from a Gaussian distribution with a zero mean and variance equal to 10−2</p>
+  </li>
+  <li md-pos="772-773" class="p"></li>
+  <li md-pos="775-858" class="p">
+    <p md-pos="777-858" class="p">对比实验1:data augmentation(random crops, horizontal ﬂips, and RGB colour jittering)</p>
+  </li>
+  <li md-pos="858-905" class="p">
+    <p md-pos="860-905" class="p">对比实验2: CNN ﬁne-tuning vs without ﬁne-tuning</p>
+  </li>
+</ul>
+<h5 id="something-unknown" md-pos="912-930"><a href="#something-unknown" name="something-unknown">something unknown:</a></h5>
+<ul>
+  <li md-pos="931-996">How data augmentation samples used sum/max-pooling or stacking</li>
+  <li md-pos="996-1023">How they choose CNN arch</li>
+</ul>
+</div>
+</body>
+</html>
