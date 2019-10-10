@@ -112,6 +112,47 @@ NINs include the stacking of three mlpconv layers and one global average pooling
   Mlpconv layer differs from maxout layer in that the convex function approximator is replaced by a universal function approximator, which has greater capability in modeling various distributions of latent concepts.
 - The details of data augmentation is not mentioned in this paper.
 
+# VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION(2015)
+为了增加网络的深度 use very small (3×3) convolution filters, small receptive field
+A stack of two 3×3 conv layers (without spatial pooling in between) has an effective receptive field of 5×5.
+
+#### why CNNs enjoy great success?
+- The large public image repositories
+- High-performance computing systems
+
+#### Architecture details
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/vgg.png)
+
+- Use filters with a very small receptive field: 3 × 3 
+- In one of the configurations utilise 1 × 1 convolution filters, which can be seen as a linear transformation of the input channels.
+- Spatial pooling is carried out by ﬁve max-pooling layers, which follow some of the conv.
+- A stack of convolutional layers (which has a different depth in different architectures) is followed by three Fully-Connected (FC) layers
+- All hidden layers are equipped with the rectification (ReLU)
+- Local Response Normalisation does not improve the performance on the ILSVRC dataset.(why??)
+
+#### why it works:
+- makes the decision function more discriminative
+- decrease the number of parameters
+- The incorporation of 1 × 1 conv layers is a way to increase the nonlinearity of the decision function without affecting the receptive fields of the conv layers
+
+#### Experiment details 实验细节中对数据的预处理做得比较好
+- Data augmentation: 
+  
+  pixel subtracting the mean RGB value, random horizontal flipping and random RGB colour shift
+  
+  randomly cropped from rescaled training images (one crop per image per SGD iteration)
+
+- mini-batch 256
+- SGD(momentum 0.9  weight decay(L2 5*10^-4))
+- learning rate was initially set to 10−2, and then decreased by a factor of 10 when the validation set accuracy stopped improving
+- dropout 0.5
+
+#### Experiment 
+- Local response normalisation does not improve on the model A without any normalisation layers.  
+- Classification error decreases with the increased ConvNet depth.
+- A deep net with small filters outperforms a shallow net with larger filters.
+
 # Deep Residual Learning for Image Recognition(2015)
 
  <figure class="half">
