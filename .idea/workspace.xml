@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b003cb05-f0db-4a45-a283-5a0338c0e16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/nin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/nin_formula.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/res_origin_formula.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/resnet_backward.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/resnet_compare.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/resnet_experiment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/resnet_fproposed_formula.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/resnet_result.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/note.md" afterDir="false" />
     </list>
@@ -30,12 +34,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\我的\net\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\QuXian\Desktop\net\Inceptionv4" />
       <recent name="C:\Users\QuXian\Desktop\net" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\我的\net\img" />
     </key>
   </component>
   <component name="RunDashboard">
