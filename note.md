@@ -112,7 +112,38 @@ NINs include the stacking of three mlpconv layers and one global average pooling
   Mlpconv layer differs from maxout layer in that the convex function approximator is replaced by a universal function approximator, which has greater capability in modeling various distributions of latent concepts.
 - The details of data augmentation is not mentioned in this paper.
 
-# Identity Mappings in Deep Residual Networks
+# Deep Residual Learning for Image Recognition(2015)
+
+ <figure class="half">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet1.png">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet_formula.png">
+</figure>
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet2.png)
+
+#### Design rules:
+- For the same output feature map size, the layers have the same number of filters
+- If the feature map size is halved, the number of filters is doubled so as to preserve the time complexity per layer.
+- conv-bn-relu
+
+#### Some shortness of deeper networks： 
+- 深层的网络梯度容易消失(can solved by BN)
+- With the network depth increasing, accuracy gets saturated and then degrades rapidly.
+
+#### Resnet improves:
+- Ease the training of networks that are substantially deeper than those used previously
+- 更快收敛 Our extremely deep residual nets are easy to optimize, but the counterpart “plain” nets (that simply stack layers) exhibit higher training error when the depth increases
+- 误差更小 Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks
+
+#### Experiment details
+- Data augmentation: randomly sampled, scale augmentation, per-pixel mean subtracted
+- SGD(lr=0.1, divided by 10 when the error plateaus, weight decay of 0.0001 and a momentum of 0.9. )
+- mini-batch size of 256
+- epoch= 60×10^4 
+- without dropout 
+- test: standard 10-crop testing, average the scores at multiple scales
+
+# Identity Mappings in Deep Residual Networks(2016)
  2 improvements: 
 - Identity shortcut connections 
 - Identity after-addition activation
@@ -150,7 +181,6 @@ result:
   This is presumably caused by BN’s regularization effect.
   
   In the original Residual Unit, although the BN normalizes the signal, this is soon added to the shortcut and thus the merged signal is not normalized. 
-
 #### Some ablation experiments on shortcut connections:
 
 conclusion:the Shortcut connections are the most direct paths for the information to propagate.
@@ -165,11 +195,9 @@ Multiplicative manipulations (scaling, gating, 1×1 convolutions, and dropout) o
 - 1×1 convolutional shortcut
   
   When stacking so many Residual Units (54 for ResNet-110), even the shortest path may still impede signal propagation.
-   
 - Dropout shortcut  
   
   The network fails to converge to a good solution.
-
 #### Some ablation experiments on activation functions
 
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet_experiment.png)
