@@ -261,4 +261,53 @@ Multiplicative manipulations (scaling, gating, 1×1 convolutions, and dropout) o
    
    When BN and ReLU are both used as pre-activation, the results are improved by healthy margins.
    
-   
+# Inception-v4,Inception-ResNet and the Impact of Residual Connections on Learning(2016)
+combine the Inception architecture with residual connections.
+
+ <figure class="half">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/Inceptionv4.png">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/Inception-ResNet.png">
+</figure>
+
+Give clear empirical evidence that training with residual connections accelerates the training of Inception networks significantly.
+
+Studied how the introduction of residual connections leads to dramatically improved training speed for the Inception architecture.
+
+#### Some doubts on He's point
+- Residual connections are inherently necessary for training very deep convolutional models for image recognition.
+- Demonstrate that it is not very difficult to train competitive very deep networks without utilizing residual connections. 
+
+#### The evolution of Inception
+- GoogLeNet or Inception-v1
+- Inception-v2 add BN
+- Inception-v3 add factorization ideas 
+- Inception-v4 use cheaper Inception blocks combine with resnet
+
+  Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
+  which is used for scaling up the dimensionality 
+  of the filter bank before the addition to match the depth of the input.
+
+#### Improvement of He's Resnet:.Scaling of the Residuals 
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet_scale.png)
+
+- To stabilize the training
+
+#### Some Questions about the point mentioned in the paper:
+- Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
+  which is used for scaling up the dimensionality 
+  of the filter bank before the addition to match the depth of the input.
+- The details about the Scaling of the Residuals
+
+#### Experiment details
+- RMSProp(momentum=0.9,decay=0.9,$\in$=1.0)
+- lr=0.045,decayed every two epochs using an exponential rate of 0.94 
+
+#### Experimental Results
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv4_result.png)
+
+- The residual version was training much faster and reached slightly better ﬁnal accuracy than the traditional Inception-v4.
+
+- Although the residual version converges faster, the final accuracy seems to mainly depend on the model size.
+
