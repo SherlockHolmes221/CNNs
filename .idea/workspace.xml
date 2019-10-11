@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b003cb05-f0db-4a45-a283-5a0338c0e16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/Inception-ResNet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Inceptionv4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/inceptionv4_result.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/resnet_scale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/bn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/inceptionv1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/inceptionv1_arch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/inceptionv1_result.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/note.md" afterDir="false" />
     </list>

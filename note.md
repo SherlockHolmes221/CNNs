@@ -14,6 +14,7 @@
 - 实验的网络结构
 
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/devil_arch.png)
+
 (fc with dropout!!)
 - 数据集 voc2007(mAP) voc2012 ILSVRC-2012(top-5) Caltech-101  Caltech-256
 - Training
@@ -153,6 +154,68 @@ A stack of two 3×3 conv layers (without spatial pooling in between) has an effe
 - Classification error decreases with the increased ConvNet depth.
 - A deep net with small filters outperforms a shallow net with larger filters.
 
+# Going Deeper with Convolutions(2015) Inception_v1
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv1.png)
+
+Introduce sparsity and replace the fully connected layers by the sparse ones 
+
+Increased the depth and width of the network while keeping the computational budget constant.
+
+#### Architecture details
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv1_arch.png)
+
+- In order to avoid patch-alignment issues, 
+current incarnations of the Inception architecture are restricted to filter sizes 1×1, 3×3 and 5×5
+- The suggested architecture is a combination of all those layers with their output filter 
+banks concatenated into a single output vector forming the input of the next stage.
+- The ratio of 3×3 and 5×5 convolutions should increase as we move to higher layers.
+- Judiciously reducing dimension wherever the computational requirements would increase too much otherwise.
+- All the convolutions, including those inside the Inception modules, use rectified linear activation.
+- Average pooling before the classifier
+
+#### Why it works:
+- sparse structure
+- combination of all those layers with their output filter 
+- adding an alternative parallel pooling path 
+- 1 * 1:降维  构成了更有效的卷积层
+
+#### Experiment details
+- SGD(momentum=0.9)
+- Fixed learning rate schedule(decreasing the learning rate by 4% every 8 epochs)
+- Trained 7 versions of the same GoogLeNet model (including one wider version), and performed ensemble prediction.
+- Testing:144-crops
+
+#### Experiment result
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv1_retult.png)
+
+# Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift(2015) Inception_v2
+
+#### What is Batch Normalization:
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/bn.png)
+
+#### What problems Batch Normalization solves:
+-  internal covariate 
+   distribution of each layer’s inputs changes during training, as the parameters of the previous layers change. 
+   This slows down the training by requiring lower learning rates and careful parameter initialization, 
+   and makes it notoriously hard to train models with saturating nonlinearities. 
+- 
+#### Why Batch Normalization works:
+- Use much higher learningrates and be less careful about initialization.
+- Acts as a regularizer, regularizes the model and reduces the need for Dropout
+- Makes it possible to use saturating nonlinearities by preventing the network from getting stuck in the saturated modes
+- Batch Normalization enables higher learning rates
+- Batch Normalization regularizes the model
+
+#### Experiments:
+- By only using Batch Normalization ( BN-Baseline ), we match the accuracy of Inception in less than half the number of training steps.
+- By applying the modifications(Increase learning rate, Remove Dropout, Reduce the photometric distortions,
+  Reduce the L2 weight regularization, Accelerate the learning rate decay, Shuffle training examples more thoroughly), 
+  we significantly increase the training speed of the network.
+
 # Deep Residual Learning for Image Recognition(2015)
 
  <figure class="half">
@@ -286,18 +349,12 @@ Studied how the introduction of residual connections leads to dramatically impro
   Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
   which is used for scaling up the dimensionality 
   of the filter bank before the addition to match the depth of the input.
-
-#### Improvement of He's Resnet:.Scaling of the Residuals 
+  
+#### Improvement of He's Resnet:Scaling of the Residuals 
 
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet_scale.png)
 
 - To stabilize the training
-
-#### Some Questions about the point mentioned in the paper:
-- Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
-  which is used for scaling up the dimensionality 
-  of the filter bank before the addition to match the depth of the input.
-- The details about the Scaling of the Residuals
 
 #### Experiment details
 - RMSProp(momentum=0.9,decay=0.9,$\in$=1.0)
@@ -308,6 +365,11 @@ Studied how the introduction of residual connections leads to dramatically impro
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv4_result.png)
 
 - The residual version was training much faster and reached slightly better ﬁnal accuracy than the traditional Inception-v4.
-
 - Although the residual version converges faster, the final accuracy seems to mainly depend on the model size.
+
+#### Some Questions about the point mentioned in the paper:
+- Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
+  which is used for scaling up the dimensionality 
+  of the filter bank before the addition to match the depth of the input.
+- The details about the Scaling of the Residuals.
 
