@@ -216,6 +216,54 @@ banks concatenated into a single output vector forming the input of the next sta
   Reduce the L2 weight regularization, Accelerate the learning rate decay, Shuffle training examples more thoroughly), 
   we significantly increase the training speed of the network.
 
+# Rethinking the Inception Architecture for ComputerVision(2015) (a little hard to understand)
+improve computational efficiency and reduce low parameter counts
+
+#### Architecture
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3.png)
+
+#### Some Design Principles
+- Avoid representational bottlenecks, especially early in the network.
+- Higher dimensional representations are easier to process locally within a network
+- Spatial aggregation can be done over lower dimensional embeddings 
+  without much or any loss in representational power.
+- Balance the width and depth of the network
+
+#### Improve points
+- Factorization into smaller convolutions 5×5conv = 2×(3×3conv) 7×7conv = 3×(3×3conv) 
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_1.png)
+
+ <figure class="half">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_2.png">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_3.png">
+</figure>
+
+- Spatial Factorization into Asymmetric Convolutions 
+
+ <figure class="half">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_4.png">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_5.png">
+</figure>
+
+- Efficient Grid Size Reduction
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_6.png)
+
+#### Experiment details
+- batch size 32 for 100 epochs,momentum=0.9
+-  RMSProp with decay of 0.9 and $\in$= 1.0.
+- learning rate of 0.045, decayed every two epoch using an exponential rate of 0.94. 
+
+#### Experiment result
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv3_7.png)
+
+#### Some questions
+- What is the meaning of 'Higher dimensional representations are easier to process locally within a network'
+- why high quality results can be reached with receptive field resolution as low as 79×79. 
+  This might prove to be helpful in systems for detecting relatively small objects.
 # Deep Residual Learning for Image Recognition(2015)
 
  <figure class="half">
