@@ -107,7 +107,7 @@ NINs include the stacking of three mlpconv layers and one global average pooling
  (There is no parameter to optimize in the global average pooling thus overfitting is avoided at this layer. )
 - Global average pooling sums out the spatial information, thus it is more robust to spatial translations of the input. 
 
-#### something questions:
+#### Something questions:
 - Weather it works well when the mlpconv goes deeper?
 - How to comprehend:
   Mlpconv layer differs from maxout layer in that the convex function approximator is replaced by a universal function approximator, which has greater capability in modeling various distributions of latent concepts.
@@ -119,12 +119,12 @@ NINs include the stacking of three mlpconv layers and one global average pooling
 
 loss function:
 
-![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/dsn_loss.png)
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/dsn_loss.jpg)
 
 companion objective functions for each hidden layer
  
 #### Improve the problems below:
-- transparency in the eﬀect intermediate layers have on overall classification.
+- transparency in the effect intermediate layers have on overall classification.
 - discriminativeness and robustness of learned features, especially in early layers
 - training effectiveness in the face of “vanishing” gradients
 
@@ -139,6 +139,14 @@ this observation means that the performance of a discriminative classifier train
 using these hidden layer feature maps can serve as a proxy for the quality/discriminativeness 
 of those hidden layer feature maps
 
+#### Experiment details:
+- SGD solver with mini-batch size of 128 and fixed momentum of 0.9
+- Two dropout layers with dropout rate 0.5.
+
+#### Experiment results:
+- L2SVM and softmax and show DSN-L2SVM and DSN-Softmax yield gains over corresponding CNN-L2SVM and CNN-Softmax approaches 
+- Our DSN model achieves an error rate of 9.69% without data augmentation and of 7.97% with data augmentation 
+
 # Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification(2015)
 
 Propose a Parametric Rectified Linear Unit (PReLU) that generalizes the traditional rectified unit.
@@ -147,15 +155,17 @@ Propose a Parametric Rectified Linear Unit (PReLU) that generalizes the traditio
 
 Derive a robust initialization method that particularly considers the rectifier nonlinearities.
 
+ <figure class="half">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/relu_init.png">
+    <img src="https://github.com/SherlockHolmes221/CNNs/raw/master/img/prelu_init.png">
+</figure>
 
+new architecture:
 
-#### Experiment details:
-- SGD solver with mini-batch size of 128 and fixed momentum of 0.9
-- Two dropout layers with dropout rate 0.5.
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/rectifiers_arch.png)
 
-#### Experiment results:
-- L2SVM and softmax and show DSN-L2SVM and DSN-Softmax yield gains over corresponding CNN-L2SVM and CNN-Softmax approaches 
-- Our DSN model achieves an error rate of 9.69% without data augmentation and of 7.97% with data augmentation 
+#### Some Problems
+- What is channel-shared and channel-wise
 
 # Highway Networks(2015)
 by the use of gating units which learn to regulate the ﬂow of information through a network
@@ -477,8 +487,6 @@ Studied how the introduction of residual connections leads to dramatically impro
 - RMSProp(momentum=0.9,decay=0.9,$\in$=1.0)
 - lr=0.045,decayed every two epochs using an exponential rate of 0.94 
 
-#### Experimental Results
-
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv4_result.png)
 
 - The residual version was training much faster and reached slightly better ﬁnal accuracy than the traditional Inception-v4.
@@ -489,4 +497,3 @@ Studied how the introduction of residual connections leads to dramatically impro
   which is used for scaling up the dimensionality 
   of the filter bank before the addition to match the depth of the input.
 - The details about the Scaling of the Residuals.
-
