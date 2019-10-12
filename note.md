@@ -113,11 +113,79 @@ NINs include the stacking of three mlpconv layers and one global average pooling
   Mlpconv layer differs from maxout layer in that the convex function approximator is replaced by a universal function approximator, which has greater capability in modeling various distributions of latent concepts.
 - The details of data augmentation is not mentioned in this paper.
 
+# Deeply-Supervised Nets(2015)
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/dsn.png)
+
+loss function:
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/dsn_loss.png)
+
+companion objective functions for each hidden layer
+ 
+#### Improve the problems below:
+- transparency in the eﬀect intermediate layers have on overall classification.
+- discriminativeness and robustness of learned features, especially in early layers
+- training effectiveness in the face of “vanishing” gradients
+
+#### Why it works:
+- for small training data and relatively shallower networks, deep supervision 
+functions as a strong “regularization” for classification accuracy and learned features
+- for large training data and deeper networks deep supervision 
+makes it convenient to exploit the significant performance gains that 
+extremely deep networks can bring by improving otherwise problematic convergence behavior
+- If the features in question are the hidden layer feature maps of a deep network, 
+this observation means that the performance of a discriminative classifier trained 
+using these hidden layer feature maps can serve as a proxy for the quality/discriminativeness 
+of those hidden layer feature maps
+
+# Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification(2015)
+
+Propose a Parametric Rectified Linear Unit (PReLU) that generalizes the traditional rectified unit.
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/prelu.png)
+
+Derive a robust initialization method that particularly considers the rectifier nonlinearities.
+
+
+
+#### Experiment details:
+- SGD solver with mini-batch size of 128 and fixed momentum of 0.9
+- Two dropout layers with dropout rate 0.5.
+
+#### Experiment results:
+- L2SVM and softmax and show DSN-L2SVM and DSN-Softmax yield gains over corresponding CNN-L2SVM and CNN-Softmax approaches 
+- Our DSN model achieves an error rate of 9.69% without data augmentation and of 7.97% with data augmentation 
+
+# Highway Networks(2015)
+by the use of gating units which learn to regulate the ﬂow of information through a network
+Optimization of highway networks is virtually independent of depth,
+while for traditional networks it suffers significantly as the number of layers increases. 
+
+#### What is Highway Networks
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/highway_formula.png)
+
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/highway_formula1.png)
+
+#### Experiment Architecture
+- The first layer is always a regular fully-connected layer followed by 9, 19, 49, or 99 fully-connected plain or highway layers and a single softmax output layer
+- The number of units in each layer is kept constant and it is 50 for highways and 71 for plain networks. 
+
+#### Experiment Results
+- Highway networks on the other hand do not seem to suffer from an increase in depth at all.
+- The highway networks always converge significantly faster than the plain ones.
+
+#### Some problems:
+- What is the meaning of 
+'Various activation functions which may be more suitable for particular problems 
+but for which robust initialization schemes are unavailable can be used in deep highway networks. '
+
 # VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION(2015)
 为了增加网络的深度 use very small (3×3) convolution filters, small receptive field
 A stack of two 3×3 conv layers (without spatial pooling in between) has an effective receptive field of 5×5.
 
-#### why CNNs enjoy great success?
+#### Why CNNs enjoy great success?
 - The large public image repositories
 - High-performance computing systems
 
@@ -264,6 +332,7 @@ improve computational efficiency and reduce low parameter counts
 - What is the meaning of 'Higher dimensional representations are easier to process locally within a network'
 - why high quality results can be reached with receptive field resolution as low as 79×79. 
   This might prove to be helpful in systems for detecting relatively small objects.
+  
 # Deep Residual Learning for Image Recognition(2015)
 
  <figure class="half">
