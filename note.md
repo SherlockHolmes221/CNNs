@@ -221,7 +221,6 @@ A stack of two 3×3 conv layers (without spatial pooling in between) has an effe
   pixel subtracting the mean RGB value, random horizontal flipping and random RGB colour shift
   
   randomly cropped from rescaled training images (one crop per image per SGD iteration)
-
 - mini-batch 256
 - SGD(momentum 0.9  weight decay(L2 5*10^-4))
 - learning rate was initially set to 10−2, and then decreased by a factor of 10 when the validation set accuracy stopped improving
@@ -267,7 +266,7 @@ banks concatenated into a single output vector forming the input of the next sta
 
 #### Experiment result
 
-![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv1_retult.png)
+![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv1_result.png)
 
 # Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift(2015) Inception_v2
 
@@ -294,7 +293,7 @@ banks concatenated into a single output vector forming the input of the next sta
   Reduce the L2 weight regularization, Accelerate the learning rate decay, Shuffle training examples more thoroughly), 
   we significantly increase the training speed of the network.
 
-# Rethinking the Inception Architecture for ComputerVision(2015) (a little hard to understand)
+# Rethinking the Inception Architecture for ComputerVision(2015)
 improve computational efficiency and reduce low parameter counts
 
 #### Architecture
@@ -481,6 +480,8 @@ Studied how the introduction of residual connections leads to dramatically impro
 
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/resnet_scale.png)
 
+- Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
+  which is used for scaling up the dimensionality of the filter bank before the addition to match the depth of the input.
 - To stabilize the training
 
 #### Experiment details
@@ -492,8 +493,4 @@ Studied how the introduction of residual connections leads to dramatically impro
 - The residual version was training much faster and reached slightly better ﬁnal accuracy than the traditional Inception-v4.
 - Although the residual version converges faster, the final accuracy seems to mainly depend on the model size.
 
-#### Some Questions about the point mentioned in the paper:
-- Each Inception block is followed by filter-expansion layer (1 × 1 convolution without activation) 
-  which is used for scaling up the dimensionality 
-  of the filter bank before the addition to match the depth of the input.
-- The details about the Scaling of the Residuals.
+(inceptionv4是以模型层数和参数量的增加来换取准确率的提升，计算参数明显比inceptionv3多)
