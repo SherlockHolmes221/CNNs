@@ -279,7 +279,7 @@ banks concatenated into a single output vector forming the input of the next sta
    distribution of each layer’s inputs changes during training, as the parameters of the previous layers change. 
    This slows down the training by requiring lower learning rates and careful parameter initialization, 
    and makes it notoriously hard to train models with saturating nonlinearities. 
-- 
+
 #### Why Batch Normalization works:
 - Use much higher learningrates and be less careful about initialization.
 - Acts as a regularizer, regularizes the model and reduces the need for Dropout
@@ -330,7 +330,7 @@ improve computational efficiency and reduce low parameter counts
 
 #### Experiment details
 - batch size 32 for 100 epochs,momentum=0.9
--  RMSProp with decay of 0.9 and $\in$= 1.0.
+-  RMSProp with decay of 0.9 
 - learning rate of 0.045, decayed every two epoch using an exponential rate of 0.94. 
 
 #### Experiment result
@@ -485,7 +485,7 @@ Studied how the introduction of residual connections leads to dramatically impro
 - To stabilize the training
 
 #### Experiment details
-- RMSProp(momentum=0.9,decay=0.9,$\in$=1.0)
+- RMSProp(momentum=0.9,decay=0.9)
 - lr=0.045,decayed every two epochs using an exponential rate of 0.94 
 
 ![](https://github.com/SherlockHolmes221/CNNs/raw/master/img/inceptionv4_result.png)
