@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b003cb05-f0db-4a45-a283-5a0338c0e16a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HOI.md" beforeDir="false" afterPath="$PROJECT_DIR$/总结.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,16 +24,17 @@
   <component name="ProjectId" id="1QgGEgcINoRaYyV1FmQrRKv890M" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\QuXian\Desktop\net\Inceptionv4" />
-      <recent name="C:\Users\QuXian\Desktop\net" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\我的\net\img" />
       <recent name="F:\我的\net" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\我的\net\img" />
+      <recent name="C:\Users\QuXian\Desktop\net\Inceptionv4" />
+      <recent name="C:\Users\QuXian\Desktop\net" />
     </key>
   </component>
   <component name="RunDashboard">
